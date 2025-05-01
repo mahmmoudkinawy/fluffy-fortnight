@@ -1,0 +1,11 @@
+target/
+.git/
+.gitignore
+Dockerfile
+.dockerignore
+*.rs.bk
+*.log
+*.tmp
+*.swp
+node_modules/
+*.md

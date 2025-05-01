@@ -1,0 +1,37 @@
+[package]
+name = "ocrs-cli"
+version = "0.10.2"
+edition = "2021"
+authors = ["Robert Knight"]
+description = "OCR CLI tool for extracting text from images"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/robertknight/ocrs"
+repository = "https://github.com/robertknight/ocrs"
+
+[dependencies]
+image = { version = "0.25.5", default-features = false, features = ["png", "jpeg", "webp"] }
+png = "0.17.16"
+serde_json = "1.0.134"
+rten = { workspace = true }
+rten-imageproc = { workspace = true }
+rten-tensor = { workspace = true }
+ocrs = { path = "../ocrs", version = "0.10.0" }
+lexopt = "0.3.0"
+url = "2.5.4"
+anyhow = "1.0.95"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ureq = "3.0.5"
+home = "0.5.9"
+
+[features]
+# Use AVX-512 instructions if available. Requires nightly Rust.
+avx512 = ["rten/avx512"]
+
+[[bin]]
+name = "ocrs"
+path = "src/main.rs"
+
+# Disable documentation for ocrs binary to avoid a filename conflict in
+# `target/doc/` with docs for the ocrs library crate.
+doc = false

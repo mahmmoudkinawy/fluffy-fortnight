@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+  "ocrs",
+  "ocrs-cli",
+]
+
+[workspace.dependencies]
+rten = { version = ">= 0.14.0, < 0.18.0" }
+rten-imageproc = { version = ">= 0.14.0, < 0.18.0" }
+rten-tensor = { version = ">= 0.14.0, < 0.18.0" }
